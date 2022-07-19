@@ -19,7 +19,7 @@ exports.getAllProducts=catchAsyncErrors(async(req,res)=>{
     res.status(200).json({
         success:true,
         products
-    })
+    });
 });
 
 // Update Product -- Admin
@@ -44,7 +44,7 @@ exports.updateProduct=catchAsyncErrors(async(req,res,next)=>{
     res.status(200).json({
         success:true,
         product
-    })
+    });
 });
 
 // DElete product:- Admin
@@ -65,7 +65,7 @@ exports.delteProduct=catchAsyncErrors( async (req,res,next)=>{
     res.status(200).json({
         success:true,
         message:"Product deleted successfully"
-    })
+    });
 
 });
 
@@ -82,5 +82,5 @@ exports.getProductDetails= catchAsyncErrors( async (req,res,next)=>{
     res.status(200).json({
         success:true,
         product,
-    })
+    });
 });
