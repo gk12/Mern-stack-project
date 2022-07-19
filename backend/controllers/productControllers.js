@@ -44,3 +44,44 @@ exports.updateProduct=async(req,res,next)=>{
         product
     })
 }
+
+// DElete product:- Admin
+
+exports.delteProduct=async (req,res,next)=>{
+
+    const product=await Product.findById(req.params.id);
+
+    if(!product)
+    {
+        return res.status(500).json({
+            success:false,
+            message:"Product not found"
+        })
+    }
+  await product.remove();
+
+    res.status(200).json({
+        success:true,
+        message:"Product deleted successfully"
+    })
+
+}
+
+// Get single product
+
+exports.getProductDetails=async (req,res,next)=>{
+    const product=await Product.findById(req.params.id);
+    
+    if(!product)
+    {
+        return res.status(500).json({
+            success:false,
+            message:"product not found"
+        })
+    }
+
+    res.status(200).json({
+        success:true,
+        product
+    })
+}
