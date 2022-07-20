@@ -2,7 +2,7 @@ class ApiFeatures{
     constructor(query,queryStr)
     {
         this.query=query;
-        this.querystr=queryStr;
+        this.queryStr=queryStr;
     }
 
     search(){
@@ -14,7 +14,7 @@ class ApiFeatures{
             },
         }
         :{};
-        this.query=this.query.find({...keyboard});
+        this.query=this.query.find({...keyword});
         return this;
     }
 }
