@@ -59,7 +59,7 @@ userSchema.pre("save",async function(next){
 //jaise irctc me login kerte hai and kuch time baad wo expire ho jata hai
 //just uske jaisa hi kam hoha token expire ho jaega
 userSchema.methods.getJWTToken=function(){
-    return JsonWebTokenError.sign({id:this._id},process.env.JWT_SECRET,{
+    return jwt.sign({id:this._id},process.env.JWT_SECRET,{
         expiresIn:process.env.JWT_EXPIRE,
     });
 };
