@@ -41,7 +41,7 @@ exports.loginUser=catchAsyncErrors(async(req,res,next)=>{
     }
 
     //check passwrod of user (matched or not)
-    const isPasswordMatched=user.comparePassword();
+    const isPasswordMatched=user.comparePassword(password);
 
     if(!isPasswordMatched){
         return next(new ErrorHander("Invalid email or password",401));
@@ -52,4 +52,4 @@ exports.loginUser=catchAsyncErrors(async(req,res,next)=>{
         token,
 });
     
-})
+});
