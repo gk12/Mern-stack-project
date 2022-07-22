@@ -54,7 +54,10 @@ userSchema.pre("save",async function(next){
     this.password=await bcrypt.hash(this.password,10);
 });
 
-//json web token
+//json web token  :-
+//cookie ka kam yahi hoga 
+//jaise irctc me login kerte hai and kuch time baad wo expire ho jata hai
+//just uske jaisa hi kam hoha token expire ho jaega
 userSchema.methods.getJWTToken=function(){
     return JsonWebTokenError.sign({id:this._id},process.env.JWT_SECRET,{
         expiresIn:process.env.JWT_EXPIRE,
