@@ -1,7 +1,6 @@
-const Product = require("../models/productModel");
 const ErrorHander = require("../utils/errorhander");
-const User=require("../models/userModel");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
+const User=require("../models/userModel");
 
 //Register a user
 exports.registerUser=catchAsyncErrors(async (req,res,next)=>{
@@ -15,9 +14,11 @@ exports.registerUser=catchAsyncErrors(async (req,res,next)=>{
             public_id:"this is a sample id",
             url:"profilepicUrl",
         },
-    });
+
+        
+        });
         res.status(201).json({
             success:true,
             user,
-        });
-})
+    });
+});
