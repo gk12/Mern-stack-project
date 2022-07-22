@@ -1,5 +1,7 @@
 const mongoose=require("mongoose");
 // const validator =require("validator");
+const bcrypt=require("bcryptjs");
+const { JsonWebTokenError } = require("jsonwebtoken");
 
 const userSchema=new mongoose.Schema({
 
@@ -43,5 +45,14 @@ const userSchema=new mongoose.Schema({
     resetPasswordExpire:Date,
 
 });
+
+//encrypt password save hone se pahle
+userSchema.pre("save",async function(next){
+    if(!this.isModified("password")){
+        next();
+    }
+    this.password=await bcrypt.hash(this.password,10);
+});
+
 
 module.exports=mongoose.model("user",userSchema)
